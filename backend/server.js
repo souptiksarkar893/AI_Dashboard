@@ -14,7 +14,7 @@ console.log('🔧 Server middleware loaded successfully');
 
 // Hugging Face API configuration
 const HF_API_URL = 'https://api-inference.huggingface.co/models/cardiffnlp/twitter-roberta-base-sentiment-latest';
-const HF_API_KEY = process.env.HUGGING_FACE_API_KEY;
+const HF_API_KEY = process.env.HUGGING_FACE_API_KEY || process.env.HUGGINGFACE_TOKEN;
 
 // Function to analyze sentiment using Hugging Face API
 async function analyzeSentiment(text) {
@@ -380,6 +380,6 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📊 Reddit Sentiment Analysis API ready!`);
   if (!HF_API_KEY) {
-    console.warn('⚠️  Warning: HUGGING_FACE_API_KEY not found in environment variables');
+    console.warn('⚠️  Warning: HUGGING_FACE_API_KEY or HUGGINGFACE_TOKEN not found in environment variables');
   }
 });
