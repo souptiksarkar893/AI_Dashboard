@@ -1,4 +1,4 @@
 /*    /index.html   200
 
-# API redirects for development (remove in production)
-/api/*  http://localhost:5000/api/:splat  200
+# API redirects for production backend
+/api/*  https://ai-dashboard-backend-n1fz.onrender.com/api/:splat  200
