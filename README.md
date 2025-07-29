@@ -2,8 +2,6 @@
 
 A full-stack web application that analyzes Reddit sentiment using AI. Enter any keyword and discover what Reddit thinks about it through AI-powered sentiment analysis using Hugging Face's advanced language models.
 
-![Dashboard Screenshot](https://via.placeholder.com/800x400/1e3c72/ffffff?text=AI+Reddit+Sentiment+Dashboard)
-
 ## 🚀 Features
 
 - **Real-time Sentiment Analysis**: Analyze Reddit posts using Hugging Face's DistilBERT model
