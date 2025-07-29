@@ -45,8 +45,8 @@ Before running this application, make sure you have:
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
-cd AI_Dash
+git clone https://github.com/souptiksarkar893/AI_Dashboard.git
+cd AI_Dashboard
 ```
 
 ### 2. Setup Backend
@@ -170,15 +170,75 @@ Health check endpoint.
 
 ## 🚀 Deployment
 
-### Frontend (Vercel/Netlify)
-1. Build the frontend: `npm run build`
-2. Deploy the `dist` folder to Vercel or Netlify
-3. Update environment variables with production API URL
+### Step 1: Deploy Backend (Render - Free Tier)
 
-### Backend (Render/Railway)
-1. Deploy to Render or Railway
-2. Set environment variables (Hugging Face API key)
-3. Update frontend `.env` with production backend URL
+1. **Create a Render account** at [render.com](https://render.com)
+
+2. **Create a new Web Service**:
+   - Connect your GitHub repository
+   - Choose "Node" as environment
+   - Set build command: `cd backend && npm install`
+   - Set start command: `cd backend && npm start`
+
+3. **Add Environment Variables** in Render dashboard:
+   ```
+   HUGGING_FACE_API_KEY=your_hugging_face_api_key_here
+   PORT=10000
+   ```
+
+4. **Deploy** and note your backend URL (e.g., `https://your-app.onrender.com`)
+
+### Step 2: Deploy Frontend (Netlify)
+
+#### Option A: Direct GitHub Deploy (Recommended)
+
+1. **Fork/Push to GitHub**: Ensure your code is on GitHub
+
+2. **Login to Netlify**: Go to [netlify.com](https://netlify.com) and sign up/login
+
+3. **New Site from Git**:
+   - Click "New site from Git"
+   - Choose GitHub and authorize
+   - Select your `AI_Dashboard` repository
+
+4. **Build Settings**:
+   - Base directory: `frontend`
+   - Build command: `npm run build`
+   - Publish directory: `frontend/dist`
+
+5. **Environment Variables** in Netlify dashboard:
+   ```
+   VITE_API_URL=https://your-backend-url.onrender.com
+   ```
+
+6. **Deploy Site** - Netlify will auto-deploy from GitHub!
+
+#### Option B: Manual Deploy
+
+1. **Build the project locally**:
+   ```bash
+   cd frontend
+   npm run build
+   ```
+
+2. **Deploy to Netlify**:
+   - Go to [netlify.com](https://netlify.com)
+   - Drag and drop the `frontend/dist` folder
+   - Set environment variable: `VITE_API_URL=your_backend_url`
+
+### Step 3: Configure Production Environment
+
+1. **Update Backend CORS** (if needed):
+   Add your Netlify domain to CORS whitelist in `backend/server.js`
+
+2. **Test the Deployment**:
+   - Open your Netlify URL
+   - Test sentiment analysis with keywords
+   - Verify all features work
+
+### Live Demo URLs
+- **Frontend**: `https://your-app-name.netlify.app`
+- **Backend**: `https://your-app-name.onrender.com`
 
 ## 📁 Project Structure
 
